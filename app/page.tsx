@@ -2,75 +2,65 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen flex items-center justify-center text-white px-6 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black" />
+    <main className="relative min-h-screen text-white">
+      {/* =========================
+          FIXED BACKGROUND LAYERS
+         ========================= */}
+
+      {/* Base gradient */}
+      <div className="fixed inset-0 bg-gradient-to-b from-black via-zinc-900 to-black -z-20" />
 
       {/* Mountain silhouette */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-[40vh] md:h-[45vh]
-                   bg-no-repeat bg-bottom bg-center bg-cover opacity-40 pointer-events-none"
-        style={{
-          backgroundImage: "url('/trapper-peak.png')",
-        }}
+        className="fixed inset-0 bg-no-repeat bg-bottom bg-center bg-cover opacity-40 -z-10"
+        style={{ backgroundImage: "url('/trapper-peak.png')" }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-3xl flex flex-col items-center text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          The Bitterroot Path Scholarship Hub
-        </h1>
+      {/* =========================
+          PAGE CONTENT (SCROLLS)
+         ========================= */}
+      <div className="relative z-10 flex flex-col min-h-screen px-6">
+        {/* HERO */}
+        <section className="flex min-h-screen items-center justify-center">
+          <div className="max-w-3xl text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              The Bitterroot Path Scholarship Hub
+            </h1>
 
-        <p className="text-lg md:text-xl text-zinc-300 mb-10">
-          A local database of Ravalli County scholarships for high school students,
-          graduates, trade schools, certifications, and further education. No account required.
-        </p>
+            <p className="text-lg md:text-xl text-zinc-300 mb-10">
+              A local database of Ravalli County scholarships for high school students,
+              graduates, trade schools, certifications, and further education.
+              No account required.
+            </p>
 
-        {/* CTA buttons */}
-        <div className="flex flex-row gap-6 justify-center items-center">
-          {/* Browse button */}
-          <Link
-            href="/browse"
-            className="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-zinc-200 transition"
-          >
-            Browse Scholarships
-          </Link>
+            {/* CTA BUTTONS */}
+            <div className="flex justify-center gap-6">
+              <Link
+                href="/browse"
+                className="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-zinc-200 transition"
+              >
+                Browse Scholarships
+              </Link>
 
-          {/* Login column */}
-          <div className="relative flex flex-col items-center">
-  <span className="absolute bottom-full mb-2 text-xs text-zinc-400">
-    Feature coming soon
-  </span>
+              <div className="relative flex flex-col items-center">
+                <span className="absolute bottom-full mb-2 text-xs text-zinc-400">
+                  Feature coming soon
+                </span>
 
-  <Link
-    href="/login"
-    className="border border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition"
-  >
-    Login to Personalize
-  </Link>
-</div>
-        </div>
+                <Link
+                  href="/login"
+                  className="border border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition"
+                >
+                  Login to Personalize
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FADE INTO FOOTER */}
+        <div className="h-40 bg-gradient-to-b from-transparent to-black" />
       </div>
-<footer className="relative z-10 mt-24 border-t border-zinc-800 pt-6 text-center text-sm text-zinc-400">
-  <p className="font-medium text-zinc-300">
-    Bitterroot Path Scholarship Hub
-  </p>
-
-  <p className="mt-1">
-    Questions or updates? Contact us at{" "}
-    <a
-      href="mailto:rclanden7@gmail.com"
-      className="underline hover:text-white"
-    >
-      rclanden7@gmail.com
-    </a>
-  </p>
-
-  <p className="mt-2 text-xs text-zinc-500">
-    Helping Ravalli County students find local scholarship opportunities and escape crippling student debt.
-  </p>
-</footer>
-
     </main>
   );
 }
