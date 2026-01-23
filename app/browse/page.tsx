@@ -70,7 +70,7 @@ export default function BrowseScholarships() {
 </div>
         <p className="text-zinc-400 mb-12">
           Explore scholarship opportunities available to students and residents
-          of Ravalli County. No account required.
+          of Ravalli County. To apply, click the scholarship links and complete applications on the organization’s website to ensure the most accurate information.
         </p>
 
         {/* Filters */}

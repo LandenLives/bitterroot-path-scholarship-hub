@@ -22,8 +22,8 @@ export default function Home() {
         </h1>
 
         <p className="text-lg md:text-xl text-zinc-300 mb-10">
-          A local guide to Ravalli County scholarships for high school students,
-          graduates, trade schools, certifications, and further education.
+          A local database of Ravalli County scholarships for high school students,
+          graduates, trade schools, certifications, and further education. No account required.
         </p>
 
         {/* CTA buttons */}
@@ -37,18 +37,18 @@ export default function Home() {
           </Link>
 
           {/* Login column */}
-          <div className="flex flex-col items-center gap-1">
-            <span className="text-xs text-zinc-400">
-              Feature coming soon
-            </span>
+          <div className="relative flex flex-col items-center">
+  <span className="absolute bottom-full mb-2 text-xs text-zinc-400">
+    Feature coming soon
+  </span>
 
-            <Link
-              href="/login"
-              className="border border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition"
-            >
-              Login to Personalize
-            </Link>
-          </div>
+  <Link
+    href="/login"
+    className="border border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition"
+  >
+    Login to Personalize
+  </Link>
+</div>
         </div>
       </div>
     </main>
