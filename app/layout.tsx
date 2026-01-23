@@ -36,6 +36,9 @@ export default function RootLayout({
           <p className="mt-2 text-xs text-zinc-400">
             Helping Ravalli County students find local scholarship opportunities.
           </p>
+          <p className="mt-3 text-xs text-zinc-500">
+           © {new Date().getFullYear()} Bitterroot Path Scholarship Hub
+          </p>
         </footer>
       </body>
     </html>
