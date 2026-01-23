@@ -32,21 +32,18 @@ export default function BrowseScholarships() {
       return false;
     }
 
-    // Community involvement
-    if (communityService !== "All") {
-      if (!s.communityService || s.communityService === "Not Required") {
-        return true;
-      }
-      if (s.communityService !== communityService) {
-        return false;
-      }
-    }
-
+   // Community involvement
+if (
+  communityService !== "All" &&
+  communityService !== "Not Required" &&
+  s.communityService !== communityService
+) {
+  return false;
+}
     // GPA filtering
     if (gpaRequirement === "All") {
       return true;
     }
-
     const sheetGpa = (s.gpaRequirement || "").trim();
 
     // Scholarships without GPA requirement always show
