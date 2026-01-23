@@ -51,6 +51,26 @@ export default function Home() {
 </div>
         </div>
       </div>
+<footer className="relative z-10 mt-24 border-t border-zinc-800 pt-6 text-center text-sm text-zinc-400">
+  <p className="font-medium text-zinc-300">
+    Bitterroot Path Scholarship Hub
+  </p>
+
+  <p className="mt-1">
+    Questions or updates? Contact us at{" "}
+    <a
+      href="mailto:rclanden7@gmail.com"
+      className="underline hover:text-white"
+    >
+      rclanden7@gmail.com
+    </a>
+  </p>
+
+  <p className="mt-2 text-xs text-zinc-500">
+    Helping Ravalli County students find local scholarship opportunities and escape crippling student debt.
+  </p>
+</footer>
+
     </main>
   );
 }
