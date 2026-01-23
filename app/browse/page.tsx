@@ -71,7 +71,7 @@ export default function BrowseScholarships() {
             onChange={(e) => setEducationPath(e.target.value)}
             className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3"
           >
-            <option value="All">Education Path</option>
+            <option value="All">Education Path (All)</option>
             <option value="High School">High School</option>
             <option value="College">College</option>
             <option value="Trade School">Trade School</option>
@@ -84,7 +84,7 @@ export default function BrowseScholarships() {
             onChange={(e) => setSchoolType(e.target.value)}
             className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3"
           >
-            <option value="All">School Type</option>
+            <option value="All">School Type (All)</option>
             <option value="Public">Public</option>
             <option value="Private">Private</option>
             <option value="Other">Other</option>
@@ -95,7 +95,7 @@ export default function BrowseScholarships() {
             onChange={(e) => setCommunityService(e.target.value)}
             className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3"
           >
-            <option value="All">Community Involvement</option>
+            <option value="All">Community Involvement (All)</option>
             <option value="Required">Required</option>
             <option value="Preferred">Preferred</option>
          </select>
@@ -105,7 +105,7 @@ export default function BrowseScholarships() {
             onChange={(e) => setGpaRequirement(e.target.value)}
             className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3"
           >
-            <option value="All">GPA Requirement</option>
+            <option value="All">GPA Requirement (All)</option>
             <option value="2.5+">2.5+</option>
             <option value="3.0+">3.0+</option>
             <option value="3.5+">3.5+</option>
