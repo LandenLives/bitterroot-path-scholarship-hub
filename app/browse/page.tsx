@@ -65,7 +65,7 @@ export default function BrowseScholarships() {
     href="/"
     className="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2 rounded-lg text-sm"
   >
-    ← Home
+    ← Back
   </Link>
 </div>
         <p className="text-zinc-400 mb-12">
