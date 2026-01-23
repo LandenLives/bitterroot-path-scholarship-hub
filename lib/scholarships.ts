@@ -12,7 +12,6 @@ export type Scholarship = {
   communityService: string;
   gpaRequirement: string;
 
-  // 🔽 NEW
   providerName: string;
   providerWebsite: string;
   applicationUrl: string;

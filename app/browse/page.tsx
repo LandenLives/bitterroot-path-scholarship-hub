@@ -4,6 +4,14 @@ import type { Scholarship } from "@/lib/scholarships";
 import { getScholarships } from "@/lib/scholarships";
 import Link from "next/link";
 
+const GPA_OPTIONS = [
+  { value: "ANY", label: "No Minimum" },
+  { value: "2.5+", label: "2.5+" },
+  { value: "3.0+", label: "3.0+" },
+  { value: "3.5+", label: "3.5+" },
+  { value: "4.0", label: "4.0" },
+];
+
 export default function BrowseScholarships() {
   const [scholarships, setScholarships] = useState<Scholarship[]>([]);
 
@@ -23,14 +31,30 @@ useEffect(() => {
   // -----------------------------
   // Filtering logic
   // -----------------------------
- const filteredScholarships = scholarships.filter((s) => {
-  return (
-    (educationPath === "All" || s.educationPath === educationPath) &&
-    (schoolType === "All" || s.schoolType === schoolType) &&
-    (communityService === "All" || s.communityService === communityService) &&
-    (gpaRequirement === "All" || s.gpaRequirement === gpaRequirement)
-  );
-  
+const filteredScholarships = scholarships.filter((s) => {
+  // Base filters
+  if (
+    (educationPath !== "All" && s.educationPath !== educationPath) ||
+    (schoolType !== "All" && s.schoolType !== schoolType) ||
+    (communityService !== "All" && s.communityService !== communityService)
+  ) {
+    return false;
+  }
+
+  // IMPORTANT: GPA bypass
+  if (gpaRequirement === "No Minimum" || gpaRequirement === "All") {
+    return true;
+  }
+
+  // Normalize sheet value
+  const sheetGpa = (s.gpaRequirement || "").trim();
+
+  // Scholarships without GPA should still show
+  if (!sheetGpa || sheetGpa === "No Minimum") {
+    return true;
+  }
+
+  return sheetGpa === gpaRequirement;
 });
 
   // -----------------------------
@@ -110,7 +134,6 @@ useEffect(() => {
             className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3"
           >
             <option value="All">GPA Requirement</option>
-            <option value="No Minimum">No Minimum</option>
             <option value="2.5+">2.5+</option>
             <option value="3.0+">3.0+</option>
             <option value="3.5+">3.5+</option>
