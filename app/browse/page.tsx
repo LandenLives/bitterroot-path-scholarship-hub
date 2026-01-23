@@ -24,35 +24,31 @@ export default function BrowseScholarships() {
   // Filtering logic (CORRECT)
   // -----------------------------
   const filteredScholarships = scholarships.filter((s) => {
-    // Education / school filters
-    if (
-      (educationPath !== "All" && s.educationPath !== educationPath) ||
-      (schoolType !== "All" && s.schoolType !== schoolType)
-    ) {
+  if (educationPath !== "All" && s.educationPath !== educationPath) {
+    return false;
+  }
+
+  if (schoolType !== "All" && s.schoolType !== schoolType) {
+    return false;
+  }
+
+  if (
+    communityService !== "All" &&
+    s.communityService !== communityService
+  ) {
+    return false;
+  }
+
+  if (gpaRequirement !== "All") {
+    const sheetGpa = (s.gpaRequirement || "").trim();
+    if (sheetGpa && sheetGpa !== gpaRequirement) {
       return false;
     }
+  }
 
-   // Community involvement
-if (
-  communityService !== "All" &&
-  communityService !== "Not Required" &&
-  s.communityService !== communityService
-) {
-  return false;
-}
-    // GPA filtering
-    if (gpaRequirement === "All") {
-      return true;
-    }
-    const sheetGpa = (s.gpaRequirement || "").trim();
+  return true;
+});
 
-    // Scholarships without GPA requirement always show
-    if (!sheetGpa || sheetGpa === "No Minimum") {
-      return true;
-    }
-
-    return sheetGpa === gpaRequirement;
-  });
 
   // -----------------------------
   // JSX
@@ -94,7 +90,7 @@ if (
             <option value="Other">Other</option>
           </select>
 
-          <select
+         <select
             value={communityService}
             onChange={(e) => setCommunityService(e.target.value)}
             className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3"
@@ -102,8 +98,7 @@ if (
             <option value="All">Community Involvement</option>
             <option value="Required">Required</option>
             <option value="Preferred">Preferred</option>
-            <option value="Not Required">Not Required</option>
-          </select>
+         </select>
 
           <select
             value={gpaRequirement}
