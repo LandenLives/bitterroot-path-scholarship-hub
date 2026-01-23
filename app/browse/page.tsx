@@ -56,9 +56,18 @@ export default function BrowseScholarships() {
   return (
     <main className="min-h-screen bg-zinc-950 text-white px-6 py-16">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl md:text-5xl font-bold mb-4">
-          Browse Local Scholarships
-        </h1>
+       <div className="flex items-center justify-between mb-4">
+  <h1 className="text-3xl font-bold">
+    Browse Local Scholarships
+  </h1>
+
+  <Link
+    href="/"
+    className="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2 rounded-lg text-sm"
+  >
+    ← Home
+  </Link>
+</div>
         <p className="text-zinc-400 mb-12">
           Explore scholarship opportunities available to students and residents
           of Ravalli County. No account required.
