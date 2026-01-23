@@ -33,16 +33,21 @@ export default function Home() {
 >
   Browse Scholarships
 </Link>
+     </div>
 
-         <Link
-  href="/login"
-  className="border border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition"
->
-  Log In to Personalize
-</Link>
+<div className="flex flex-col items-center gap-1">
+  <span className="text-xs text-zinc-400">
+    Feature coming soon
+  </span>
 
-        </div>
-      </div>
-    </main>
-  );
+  <Link
+    href="/login"
+    className="border border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition"
+  >
+    Login to Personalize
+  </Link>
+ </div>
+  </div>
+  </main>
+);
 }
