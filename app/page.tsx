@@ -27,7 +27,7 @@ export default function Home() {
         </p>
 
         {/* CTA buttons */}
-        <div className="flex flex-row gap-6 justify-center items-start">
+        <div className="flex flex-row gap-6 justify-center items-center">
           {/* Browse button */}
           <Link
             href="/browse"
