@@ -25,29 +25,30 @@ export default function Home() {
           A local guide to Ravalli County scholarships for high school students,
           graduates, trade schools, certifications, and further education.
         </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-  href="/browse"
-  className="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-zinc-200 transition"
->
-  Browse Scholarships
-</Link>
-     </div>
-
-<div className="flex flex-col items-center gap-1">
-  <span className="text-xs text-zinc-400">
-    Feature coming soon
-  </span>
-
+      </div>
+       <div className="flex flex-row gap-6 justify-center items-start">
+  {/* Browse button */}
   <Link
-    href="/login"
-    className="border border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition"
+    href="/browse"
+    className="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-zinc-200 transition"
   >
-    Login to Personalize
+    Browse Scholarships
   </Link>
- </div>
+
+  {/* Login column */}
+  <div className="flex flex-col items-center gap-1">
+    <span className="text-xs text-zinc-400">
+      Feature coming soon
+    </span>
+
+    <Link
+      href="/login"
+      className="border border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition"
+    >
+      Login to Personalize
+    </Link>
   </div>
+</div>
   </main>
 );
 }
