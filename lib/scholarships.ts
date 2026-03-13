@@ -22,7 +22,7 @@ export async function getScholarships(): Promise<Scholarship[]> {
   const res = await fetch(
   "https://opensheet.elk.sh/19TS0og78hGhHj9t2uPC_ShYT3GL90Gw1wpXExQoiZE8/Scholarships",
   {
-    next: { revalidate: 60 }, // 🔥 refresh every 1 minutes
+    next: { revalidate: 60 }, // refresh every 1 minutes
   }
 );
   if (!res.ok) {
