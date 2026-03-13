@@ -28,8 +28,9 @@ export default function Home() {
             </h1>
 
             <p className="text-lg md:text-xl text-zinc-300 mb-10">
-              A local database of Ravalli County, Montana scholarships for high school students,
-              graduates, trade schools, certifications, and further education.
+              A local scholarship database for students in Ravalli County: Darby, Hamilton, Corvallis, Stevensville, Victor, Florence, and the Bitterroot Valley of Montana. 
+              Browse scholarships for high school seniors, graduates, trade schools, certifications, and further education.
+
               No account required.
             </p>
 
