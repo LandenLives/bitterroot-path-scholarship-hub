@@ -1,4 +1,23 @@
 import Link from "next/link";
+import TownTicker from "./components/TownTicker";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Bitterroot Path Scholarship Hub | Ravalli County Scholarships",
+  description:
+    "Explore Ravalli County scholarships, Hamilton Montana scholarships, and Bitterroot Valley opportunities for graduating seniors and residents.",
+  keywords: [
+    "Ravalli County scholarships",
+    "Hamilton Montana scholarships",
+    "Bitterroot Valley scholarships",
+  ],
+  openGraph: {
+    title: "Bitterroot Path Scholarship Hub",
+    description:
+      "Explore Ravalli County scholarships, Hamilton Montana scholarships, and Bitterroot Valley opportunities for graduating seniors and residents.",
+    url: "https://bitterrootpath.org",
+  },
+};
 
 export default function Home() {
   return (
@@ -23,6 +42,8 @@ export default function Home() {
         {/* HERO */}
         <section className="flex min-h-screen items-center justify-center">
           <div className="max-w-3xl text-center">
+            <TownTicker />
+
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               The Bitterroot Path Scholarship Hub
             </h1>
@@ -35,7 +56,7 @@ export default function Home() {
             </p>
 
             {/* CTA BUTTONS */}
-            <div className="flex justify-center gap-6">
+            <div className="flex flex-wrap justify-center gap-6">
               <Link
                 href="/browse"
                 className="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-zinc-200 transition"
@@ -55,7 +76,15 @@ export default function Home() {
                   Login to Personalize
                 </Link>
               </div>
+
+              <Link
+                href="/about"
+                className="border border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition"
+              >
+                About Us
+              </Link>
             </div>
+
           </div>
         </section>
 

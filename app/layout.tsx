@@ -2,9 +2,16 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bitterrootpath.org"),
   title: "Bitterroot Path Scholarship Hub",
   description:
     "A local database of Ravalli County scholarships for students and residents.",
+  openGraph: {
+    title: "Bitterroot Path Scholarship Hub",
+    description:
+      "A local database of Ravalli County scholarships for students and residents.",
+    url: "https://bitterrootpath.org",
+  },
 };
 
 export default function RootLayout({
@@ -14,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-black text-white">
+      <body className="bg-black text-white" suppressHydrationWarning>
         {children}
 
         {/* SITE-WIDE FOOTER */}
