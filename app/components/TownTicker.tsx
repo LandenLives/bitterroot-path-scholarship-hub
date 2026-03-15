@@ -12,8 +12,8 @@ const tickerText = towns.join(" • ");
 
 export default function TownTicker() {
   return (
-    <div className="w-full max-w-3xl">
-      <div className="marquee-wrapper mb-1 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.45em] text-zinc-400">
+    <div className="w-full max-w-[min(92vw,48rem)] mx-auto">
+      <div className="marquee-wrapper mb-2 rounded-full border border-white/10 bg-white/5 px-3 sm:px-4 py-2 text-[0.55rem] sm:text-xs uppercase tracking-[0.35em] sm:tracking-[0.45em] text-zinc-400">
         <div className="marquee-track">
           {[0, 1].map((repeat) => (
             <span key={repeat} className="mr-8">
