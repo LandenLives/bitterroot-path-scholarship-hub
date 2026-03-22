@@ -41,7 +41,7 @@ export default function AboutPage() {
           <TownTicker />
 
           <h1 className="text-4xl md:text-6xl font-bold">
-            Ravalli County Scholarships
+            About Us
           </h1>
           <p className="max-w-3xl text-lg md:text-xl text-zinc-300">
             The Bitterroot Path Scholarship Hub helps students across Ravalli

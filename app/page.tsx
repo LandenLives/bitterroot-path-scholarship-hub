@@ -1,5 +1,6 @@
-import Link from "next/link";
 import TownTicker from "./components/TownTicker";
+import Link from "next/link";
+import BrowseScholarshipsCta from "./components/BrowseScholarshipsCta";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -57,12 +58,7 @@ export default function Home() {
 
             {/* CTA BUTTONS */}
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center md:gap-6">
-              <Link
-                href="/browse"
-                className="w-full sm:w-auto text-center bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-zinc-200 transition"
-              >
-                Browse Scholarships
-              </Link>
+              <BrowseScholarshipsCta className="w-full sm:w-auto text-center bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-zinc-200 transition" />
 
               <div className="flex flex-col items-center w-full sm:w-auto text-center">
                 <span className="mb-2 text-xs text-zinc-400">Feature coming soon</span>

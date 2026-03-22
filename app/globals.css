@@ -44,3 +44,35 @@ body {
     transform: translateX(-50%);
   }
 }
+
+.money-rain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.money-rain-dollar {
+  position: absolute;
+  top: -12%;
+  font-size: clamp(1.8rem, 2vw, 2.5rem);
+  font-weight: 700;
+  color: #22c55e;
+  text-shadow: 0 8px 16px rgba(5, 5, 5, 0.55);
+  animation-name: moneyRainFall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  will-change: top, opacity;
+}
+
+@keyframes moneyRainFall {
+  0% {
+    top: -12%;
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
