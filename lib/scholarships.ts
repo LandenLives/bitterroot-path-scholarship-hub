@@ -18,13 +18,16 @@ export type Scholarship = {
   applicationType: "internal" | "external";
 };
 
+export const normalizeSlug = (value: unknown): string =>
+  String(value ?? "").trim().toLowerCase();
+
 const SHEET_URL =
   "https://opensheet.elk.sh/19TS0og78hGhHj9t2uPC_ShYT3GL90Gw1wpXExQoiZE8/Scholarships";
 
 const normalizeScholarship = (row: Record<string, unknown>): Scholarship => {
   const active = String(row.active ?? "TRUE").trim().toUpperCase() === "TRUE";
   const title = String(row.title ?? "").trim();
-  const slug = String(row.slug ?? "").trim().toLowerCase();
+  const slug = normalizeSlug(row.slug);
 
   return {
     active,
@@ -82,10 +85,15 @@ export async function getSchoolSpecificScholarships(): Promise<Scholarship[]> {
     .filter((scholarship) => scholarship.slug && scholarship.title);
 
   const lookup = new Map(
-    mapped.map((scholarship) => [scholarship.slug.toLowerCase(), scholarship])
+    mapped
+      .map((scholarship) => {
+        const key = normalizeSlug(scholarship.slug);
+        return key ? [key, scholarship] : null;
+      })
+      .filter((entry): entry is [string, Scholarship] => Boolean(entry))
   );
 
-  return SCHOOL_SPECIFIC_SLUGS.map((slug) => lookup.get(slug)).filter(
+  return SCHOOL_SPECIFIC_SLUGS.map((slug) => lookup.get(normalizeSlug(slug))).filter(
     (value): value is Scholarship => Boolean(value)
   );
 }
@@ -94,7 +102,12 @@ export async function getSchoolSpecificScholarship(
   slug: string
 ): Promise<Scholarship | null> {
   const schools = await getSchoolSpecificScholarships();
-  const normalized = slug.trim().toLowerCase();
-  return schools.find((school) => school.slug.toLowerCase() === normalized) ?? null;
+  const normalized = normalizeSlug(slug);
+  if (!normalized) {
+    return null;
+  }
+  return (
+    schools.find((school) => normalizeSlug(school.slug) === normalized) ?? null
+  );
 }
 

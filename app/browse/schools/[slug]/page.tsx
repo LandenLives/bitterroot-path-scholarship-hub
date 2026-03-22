@@ -4,6 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import {
   getSchoolSpecificScholarship,
   getSchoolSpecificScholarships,
+  normalizeSlug,
 } from "@/lib/scholarships";
 
 type PageParams = {
@@ -12,9 +13,11 @@ type PageParams = {
 
 export async function generateStaticParams() {
   const schools = await getSchoolSpecificScholarships();
-  return schools.map((school) => ({
-    slug: school.slug,
-  }));
+
+  return schools
+    .map((school) => normalizeSlug(school.slug))
+    .filter((slug): slug is string => Boolean(slug))
+    .map((slug) => ({ slug }));
 }
 
 export default async function SchoolSpecificScholarshipPage({
@@ -22,14 +25,20 @@ export default async function SchoolSpecificScholarshipPage({
 }: {
   params: PageParams;
 }) {
-  const normalizedSlug = params.slug.trim().toLowerCase();
-  const scholarship = await getSchoolSpecificScholarship(normalizedSlug);
+  const requestedSlug = String(params?.slug ?? "");
+  const normalizedSlug = normalizeSlug(requestedSlug);
 
-  if (!scholarship || scholarship.slug !== normalizedSlug) {
+  if (!normalizedSlug) {
     return notFound();
   }
 
-  const destination = scholarship.applicationUrl?.trim();
+  const scholarship = await getSchoolSpecificScholarship(normalizedSlug);
+
+  if (!scholarship || normalizeSlug(scholarship.slug) !== normalizedSlug) {
+    return notFound();
+  }
+
+  const destination = String(scholarship.applicationUrl ?? "").trim();
 
   if (scholarship.active && destination) {
     redirect(destination);
